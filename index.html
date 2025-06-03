@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TOXIFY</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Plyr CSS -->
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000;
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      height: 100px;
+      background-color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #222;
+    }
+
+    header h1 {
+      font-size: 64px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 4px;
+    }
+
+    @media screen and (max-width: 600px) {
+      header {
+        height: 80px;
+      }
+      header h1 {
+        font-size: 42px;
+      }
+    }
+
+    .player-wrapper {
+      width: 100vw;
+      background-color: #000;
+    }
+
+    video {
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  display: block;
+  background-color: black;
+}
+    .tabs {
+      display: flex;
+      background: #111;
+      border-top: 1px solid #222;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 15px 0;
+      text-align: center;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 18px;
+      color: #ccc;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .tab.active {
+      color: #fff;
+      border-bottom: 3px solid #1db954;
+      background-color: #222;
+    }
+
+    .tab-content {
+      display: none;
+      background: #111;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
+
+    /* Telegram popup styles */
+    #telegramPopup {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    #telegramPopupContent {
+      background: #222;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #1db954;
+      color: #fff;
+      max-width: 400px;
+      width: 90%;
+      position: relative;
+      text-align: center;
+    }
+
+    #telegramPopupContent h2 {
+      margin-bottom: 15px;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    #telegramPopupContent p {
+      margin-bottom: 25px;
+      font-size: 16px;
+      color: #ccc;
+    }
+
+    #telegramCloseBtn {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      font-size: 28px;
+      font-weight: 700;
+      color: #bbb;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+
+    #telegramCloseBtn:hover {
+      color: #1db954;
+    }
+
+    #telegramPopupContent a {
+      display: inline-block;
+      padding: 12px 28px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      background-color: #1db954;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(29, 185, 84, 0.6);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #telegramPopupContent a:hover {
+      background-color: #14a43f;
+      box-shadow: 0 6px 14px rgba(20, 164, 63, 0.8);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>TOXIFY</h1>
+</header>
+
+<div class="player-wrapper">
+  <div style="position: relative; width: 100%; padding-top: 56.25%; background: black;">
+    <iframe src="https://toxifylive.github.io/Willow-Amz/" 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
+            allowfullscreen 
+            allow="autoplay; encrypted-media">
+    </iframe>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" id="tabChat">Live Chat</div>
+  <div class="tab" id="tabScoreboard">Scoreboard</div>
+</div>
+
+<div class="tab-content active" id="chatSection">
+  <iframe src="https://allrounder745.github.io/Live-Chat-Bacyand-/" title="Live Chat"></iframe>
+</div>
+
+<div class="tab-content" id="scoreboardSection">
+  <iframe src="https://widget.jionews.com/jiotv-cricket/prod/v1/index.html?theme=dark&ismobile=true" title="Scoreboard Widget"></iframe>
+</div>
+
+<!-- Telegram popup -->
+<div id="telegramPopup">
+  <div id="telegramPopupContent">
+    <div id="telegramCloseBtn">&times;</div>
+    <h2>Join Our Telegram Channel</h2>
+    <p>Stay updated with live streams and latest news.</p>
+    <a href="https://t.me/+ig6RY3vGe7A4MzNl" target="_blank" rel="noopener noreferrer">Join Now</a>
+  </div>
+</div>
+
+<!-- Plyr & HLS.js -->
+<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+<script>
+  fetch('https://raw.githubusercontent.com/StmpupCricket/Jio-Hotstar-json/refs/heads/main/data.json')
+    .then(response => response.json())
+    .then(data => {
+      const m3u8Url = data.stream_url;  // <-- Only this line changed from data[0].hls to data.stream_url
+      const video = document.getElementById('player');
+
+      if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(m3u8Url);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = m3u8Url;
+        video.addEventListener('loadedmetadata', () => video.play());
+      }
+
+      new Plyr(video);
+    })
+    .catch(err => {
+      console.error('Error loading stream:', err);
+      alert("Failed to load stream.");
+    });
+
+  // Tab switching
+  const tabChat = document.getElementById('tabChat');
+  const tabScoreboard = document.getElementById('tabScoreboard');
+  const chatSection = document.getElementById('chatSection');
+  const scoreboardSection = document.getElementById('scoreboardSection');
+
+  tabChat.addEventListener('click', () => {
+    tabChat.classList.add('active');
+    tabScoreboard.classList.remove('active');
+    chatSection.classList.add('active');
+    scoreboardSection.classList.remove('active');
+  });
+
+  tabScoreboard.addEventListener('click', () => {
+    tabScoreboard.classList.add('active');
+    tabChat.classList.remove('active');
+    scoreboardSection.classList.add('active');
+    chatSection.classList.remove('active');
+  });
+
+  // Telegram popup close button handler
+  const telegramPopup = document.getElementById('telegramPopup');
+  const telegramCloseBtn = document.getElementById('telegramCloseBtn');
+
+  telegramCloseBtn.addEventListener('click', () => {
+    telegramPopup.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
